@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSCA Mathematics Question Bank: Vectors & Complex Numbers (150 Questions)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #cc342c;
+      --brand-dark: #a62a23;
+      --brand-light: #fdecea;
+      --brand-font: "Michroma", "Eurostile", "Microgramma", "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --success-light: #dcfce7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* ==================== 1. HERO HEADER ==================== */
+    header.hero-banner {
+      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+      color: white;
+      padding: 16px 20px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-text-logo {
+      font-family: var(--brand-font);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 8px;
+      padding: 6px 14px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-title h1 {
+      font-family: var(--brand-font);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 1.05rem;
+    }
+
+    .hero-title p {
+      font-family: var(--brand-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      .hero-brand {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .brand-text-logo {
+        font-size: 0.85rem;
+        padding: 4px 10px;
+      }
+    }
+
+    /* ==================== 2. SLIM STICKY COMMAND BAR ==================== */
+    .sticky-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 2px solid var(--brand);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .sticky-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bar-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topic-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      background: var(--slate-100);
+      padding: 3px;
+      border-radius: 6px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--slate-700);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+      font-family: var(--brand-font);
+      letter-spacing: 0.02em;
+    }
+
+    .tab-btn:hover {
+      color: var(--brand);
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: var(--brand);
+      box-shadow: inset 0 -2px 0 var(--brand), 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .tab-badge {
+      font-size: 0.68rem;
+      opacity: 0.75;
+      font-family: var(--brand-font);
+    }
+
+    .bar-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .stat-lbl {
+      color: var(--slate-600);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-family: var(--brand-font);
+      letter-spacing: 0.02em;
+    }
+
+    .stat-val {
+      font-weight: 700;
+      color: var(--slate-800);
+    }
+
+    .timer-btn {
+      background: transparent;
+      border: none;
+      color: var(--slate-600);
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-btn:hover {
+      color: var(--brand);
+      background: var(--slate-200);
+    }
+
+    .mode-switch {
+      display: flex;
+      gap: 2px;
+      background: var(--slate-100);
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--slate-700);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: var(--brand-font);
+      letter-spacing: 0.02em;
+    }
+
+    .mode-btn.active {
+      background: white;
+      color: var(--brand);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .btn-action {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      color: var(--slate-700);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--brand-font);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-action:hover {
+      background: var(--slate-200);
+    }
+
+    .btn-action.primary {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .btn-action.primary:hover {
+      background: var(--brand-dark);
+    }
+
+    .toggle-grid-link {
+      background: none;
+      border: none;
+      color: var(--brand);
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 2px 4px;
+      font-family: var(--brand-font);
+    }
+
+    .bar-nav-row {
+      overflow-x: auto;
+      padding-top: 2px;
+    }
+
+    .bar-nav-row.collapsed {
+      display: none;
+    }
+
+    .jump-grid-compact {
+      display: grid;
+      grid-template-columns: repeat(25, 1fr);
+      gap: 4px;
+      min-width: 700px;
+    }
+
+    .jump-node {
+      height: 24px;
+      border-radius: 4px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-600);
+      font-size: 0.72rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.1s;
+    }
+
+    .jump-node:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .jump-node.answered {
+      background: var(--slate-200);
+      color: var(--slate-800);
+    }
+
+    .jump-node.correct {
+      background: var(--success-light);
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .jump-node.wrong {
+      background: var(--danger-light);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    /* ==================== 3. QUESTIONS LIST ==================== */
+    main {
+      max-width: 1200px;
+      margin: 18px auto 0;
+      padding: 0 16px;
+    }
+
+    .question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .q-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--slate-200);
+      scroll-margin-top: 105px;
+    }
+
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .q-id {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .q-tag {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .q-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--slate-900);
+      margin-bottom: 14px;
+      word-break: break-word;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .options-grid.grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .opt-btn {
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-200);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      text-align: left;
+      cursor: pointer;
+      color: var(--slate-800);
+      transition: all 0.12s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .opt-btn:hover:not(:disabled) {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    .opt-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .opt-btn.correct {
+      background: var(--success-light) !important;
+      border-color: var(--success) !important;
+      color: var(--success) !important;
+      font-weight: 600;
+    }
+
+    .opt-btn.wrong {
+      background: var(--danger-light) !important;
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+
+    .q-feedback {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .q-feedback.show {
+      display: block;
+    }
+
+    .q-feedback.correct {
+      background: var(--success-light);
+      color: #14532d;
+      border-left: 4px solid var(--success);
+    }
+
+    .q-feedback.wrong {
+      background: var(--danger-light);
+      color: #7f1d1d;
+      border-left: 4px solid var(--danger);
+    }
+
+    .key-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 28px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--slate-200);
+    }
+
+    .key-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .key-header h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate-800);
+    }
+
+    .key-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.82rem;
+    }
+
+    .key-table th, .key-table td {
+      border: 1px solid var(--slate-200);
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    .key-table th {
+      background: var(--slate-100);
+      font-weight: 700;
+      color: var(--slate-700);
+    }
+
+    .key-table td.correct-highlight {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .collapse-content {
+      display: none;
+    }
+
+    .collapse-content.open {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--slate-600);
+    }
+
+    /* In-page timer dialog */
+    .timer-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(15, 23, 42, 0.62);
+    }
+    .timer-modal-backdrop[hidden] { display: none !important; }
+    .timer-modal {
+      width: min(100%, 380px);
+      padding: 24px;
+      border-radius: 14px;
+      background: #fff;
+      color: #172033;
+      box-shadow: 0 20px 70px rgba(0,0,0,.3);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    .timer-modal h2 { margin: 0 0 8px; font-size: 1.25rem; }
+    .timer-modal p { margin: 0 0 16px; color: #64748b; font-size: .92rem; }
+    .timer-modal label { display: block; margin-bottom: 6px; font-weight: 650; }
+    .timer-modal input {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+      color: #0f172a;
+      background: #fff;
+    }
+    .timer-modal input:focus { outline: 3px solid rgba(37,99,235,.18); border-color: #2563eb; }
+    .timer-modal-error { min-height: 1.25em; margin-top: 7px; color: #b91c1c; font-size: .85rem; }
+    .timer-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+    .timer-modal-actions button {
+      border: 0; border-radius: 8px; padding: 10px 15px; cursor: pointer;
+      font: inherit; font-weight: 650;
+    }
+    .timer-modal-cancel { background: #e2e8f0; color: #334155; }
+    .timer-modal-save { background: #2563eb; color: #fff; }
+    .timer-modal-save:hover { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+
+<header class="hero-banner">
+  <div class="hero-content">
+    <div class="hero-brand">
+      <div class="brand-text-logo">Crossline Edu</div>
+      <div class="hero-title">
+        <h1>CSCA Vectors & Complex Numbers Question Bank (150 Questions)</h1>
+        <p>Chinese College Preparatory / Standard Entrance Exam Syllabus</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sticky-bar">
+  <div class="sticky-inner">
+    <div class="bar-top-row">
+      <div class="topic-tabs">
+        <button class="tab-btn active" onclick="switchTab('vec_linear')" id="tab-vec_linear">
+          Vector Linear Ops (向量线性运算) <span class="tab-badge">50</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('vec_collinear')" id="tab-vec_collinear">
+          Collinear Vectors (向量共线) <span class="tab-badge">25</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('vec_dot')" id="tab-vec_dot">
+          Dot Product (向量数量积) <span class="tab-badge">25</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('complex_concept')" id="tab-complex_concept">
+          Complex Concepts (复数概念) <span class="tab-badge">25</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('complex_ops')" id="tab-complex_ops">
+          Complex Operations (复数四则运算) <span class="tab-badge">50</span>
+        </button>
+      </div>
+
+      <div class="bar-controls">
+        <div class="stat-pill">
+          <span class="stat-lbl">Progress</span>
+          <span class="stat-val" id="stat-progress">0 / 50</span>
+        </div>
+
+        <div class="stat-pill" id="practice-acc-box">
+          <span class="stat-lbl">Accuracy</span>
+          <span class="stat-val" id="stat-accuracy">--</span>
+        </div>
+
+        <div class="stat-pill" id="score-box" style="display:none;">
+          <span class="stat-lbl">Score</span>
+          <span class="stat-val" id="stat-score" style="color:var(--success);">0%</span>
+        </div>
+
+        <!-- Customizable Exam Timer -->
+        <div class="stat-pill" id="timer-box" style="display:none;">
+          <span class="stat-lbl">Timer</span>
+          <span class="stat-val" id="timer-display" style="cursor:pointer; font-variant-numeric:tabular-nums;" onclick="promptTimerDuration()" title="Click to customize duration">45:00</span>
+          <button class="timer-btn" id="timer-toggle-btn" onclick="toggleTimer()" title="Play / Pause">⏸</button>
+          <button class="timer-btn" id="timer-config-btn" onclick="promptTimerDuration()" title="Set Duration (min)">⚙</button>
+        </div>
+
+        <div class="mode-switch">
+          <button class="mode-btn active" id="btn-practice" onclick="setMode('practice')">Practice</button>
+          <button class="mode-btn" id="btn-exam" onclick="setMode('exam')">Exam</button>
+        </div>
+
+        <button class="btn-action" onclick="resetCurrentTab()">Reset</button>
+        <button class="btn-action primary" id="btn-submit-exam" style="display:none;" onclick="submitExam()">Grade</button>
+        <button class="toggle-grid-link" id="toggle-grid-btn" onclick="toggleNavigatorGrid()">▲ Minimize</button>
+      </div>
+    </div>
+
+    <div class="bar-nav-row" id="bar-nav-row">
+      <div class="jump-grid-compact" id="jump-grid"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="question-list" id="questions-container"></section>
+
+  <section class="key-section">
+    <div class="key-header" onclick="toggleAnswerKey()">
+      <h3 id="key-title">Quick Answer Key (Vector Linear Ops)</h3>
+      <span id="key-arrow" style="font-size:1rem; font-weight:bold;">▼</span>
+    </div>
+    <div class="collapse-content" id="key-content">
+      <div style="overflow-x:auto;">
+        <table class="key-table" id="key-table"></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© CSCA Mathematics Question Bank · Vectors & Complex Numbers Module (150 Questions)</p>
+</footer>
+
+<script>
+/* ==================== 1. QUESTION REPOSITORIES (150 QUESTIONS) ==================== */
+
+// Topic 1: Vector Linear Operations (50 Qs)
+const RAW_VLO = [
+  ["VLO001","Commutative Law of Vector Addition","Among the following equations, the one that always holds is（　　）",["A. a−b＝b−a","B. a＋b＝b＋a","C. a＋b＝a−b","D. a＋b＝0"],"B"],
+  ["VLO002","Opposite Vectors","Among the following equations, which is correct（　　）",["A. a−a＝a","B. −(−a)＝−a","C. a＋a＝0","D. a＋(−a)＝0"],"D"],
+  ["VLO003","Zero Vector","Among the following statements, which is correct（　　）",["A. The length of the zero vector is 1","B. The zero vector has no length","C. The direction of the zero vector is arbitrary","D. The zero vector cannot be equal to other vectors"],"C"],
+  ["VLO004","Vector Subtraction","The result of simplifying a−(b−c) is（　　）",["A. a−b−c","B. a−b＋c","C. a＋b−c","D. a＋b＋c"],"B"],
+  ["VLO005","Scalar Multiplication of a Vector","If a≠0 and b＝−2a, then the relationship between b and a is（　　）",["A. Same direction, and |b|＝2|a|","B. Opposite directions, and |b|＝|a|/2","C. Opposite directions, and |b|＝2|a|","D. The direction cannot be determined"],"C"],
+  ["VLO006","Scalar Multiplication of a Vector","If a＝(2，−3), then −2a＝（　　）",["A. (−4，6)","B. (4，−6)","C. (−4，−6)","D. (2，6)"],"A"],
+  ["VLO007","Coordinate Vector Addition","Given a＝(1，−2), b＝(3，4), then a＋b＝（　　）",["A. (2，−6)","B. (4，2)","C. (−2，2)","D. (4，−2)"],"B"],
+  ["VLO008","Coordinate Vector Subtraction","Given a＝(5，1), b＝(2，−3), then a−b＝（　　）",["A. (3，4)","B. (7，−2)","C. (3，−2)","D. (−3，−4)"],"A"],
+  ["VLO009","Linear Combination of Coordinate Vectors","Given a＝(1，2), b＝(3，−1), then 2a−b＝（　　）",["A. (5，3)","B. (1，−5)","C. (−1，5)","D. (−1，3)"],"C"],
+  ["VLO010","Opposite Vector of a Coordinate Vector","If a＝(−2，5), then −a＝（　　）",["A. (−2，−5)","B. (2，−5)","C. (2，5)","D. (−5，2)"],"B"],
+  ["VLO011","Linear Combination of Vectors","If p＝a＋b and q＝a−b, then p＋q＝（　　）",["A. 2a","B. 2b","C. a","D. 0"],"A"],
+  ["VLO012","Linear Combination of Vectors","If p＝2a−b and q＝a＋b, then p−q＝（　　）",["A. a−2b","B. 3a","C. 2a−2b","D. −a"],"A"],
+  ["VLO013","Linear Combination of Vectors","If x＝a＋2b and y＝3a−b, then 2x＋y＝（　　）",["A. a＋3b","B. 5a−3b","C. 2a＋3b","D. 5a＋3b"],"D"],
+  ["VLO014","Linear Combination of Vectors","If c＝3a＋2b, then 2c＝（　　）",["A. 5a＋4b","B. 6a＋2b","C. 6a＋4b","D. 3a＋4b"],"C"],
+  ["VLO015","Vector Equality","If a＝(x，2), b＝(3，2), and a＝b, then x＝（　　）",["A. −3","B. 3","C. 2","D. 5"],"B"],
+  ["VLO016","Scalar Multiplication of Coordinate Vectors","If a＝(−1，4), then 3a＋(2，−1)＝（　　）",["A. (5，11)","B. (1，11)","C. (−1，11)","D. (−5，13)"],"C"],
+  ["VLO017","Identifying Opposite Vectors","If a＋b＝0, then（　　）",["A. b＝−a","B. a＝b","C. a＝0","D. b＝0"],"A"],
+  ["VLO018","Scalar Multiplication of Collinear Vectors","If b＝3a and a≠0, then which of the following statements is correct（　　）",["A. a and b are in opposite directions","B. a and b are not collinear","C. |a|＝3|b|","D. a and b are in the same direction"],"D"],
+  ["VLO019","Simplifying Vector Addition and Subtraction","The result of simplifying 2a−3b＋(b−a) is（　　）",["A. 3a−2b","B. a−4b","C. −a−2b","D. a−2b"],"D"],
+  ["VLO020","Linear Combination of Coordinate Vectors","Given a＝(2，1), b＝(−1，3), then a＋2b＝（　　）",["A. (4，5)","B. (1，4)","C. (0，7)","D. (−4，7)"],"C"],
+  ["VLO021","Triangle Rule","In △ABC, AB＋BC＝（　　）",["A. CA","B. BA","C. CB","D. AC"],"D"],
+  ["VLO022","Opposite Vectors","In △ABC, AB＋BA＝（　　）",["A. AC","B. BC","C. CB","D. 0"],"D"],
+  ["VLO023","Vector Sum Along a Polygonal Path","In quadrilateral ABCD, AB＋BC＋CD＝（　　）",["A. AD","B. DA","C. AC","D. BD"],"A"],
+  ["VLO024","Parallelogram Diagonals","In parallelogram ABCD, given AB＝a and AD＝b, then AC＝（　　）",["A. a−b","B. b−a","C. −a−b","D. a＋b"],"D"],
+  ["VLO025","Parallelogram Diagonals","In parallelogram ABCD, given AB＝a and AD＝b, then DB＝（　　）",["A. a＋b","B. a−b","C. b−a","D. −a−b"],"B"],
+  ["VLO026","Parallelogram Side Vectors","In parallelogram ABCD, given AB＝a and AD＝b, then BC＝（　　）",["A. b","B. a","C. −a","D. −b"],"A"],
+  ["VLO027","Parallelogram Side Vectors","In parallelogram ABCD, given AB＝a and AD＝b, then CD＝（　　）",["A. −a","B. a","C. b","D. −b"],"A"],
+  ["VLO028","Parallelogram Linear Combination","In parallelogram ABCD, given AB＝a and AD＝b, then CA＋DB＝（　　）",["A. 2a","B. −2a","C. 2b","D. −2b"],"D"],
+  ["VLO029","Median Vector of a Triangle","In △ABC, M is the midpoint of BC, then AM＝（　　）",["A. (AB＋AC)/2","B. (AB−AC)/2","C. AB＋AC","D. (AC−AB)/2"],"A"],
+  ["VLO030","Midpoint Position Vector","O is the origin, the position vectors of points A and B are a and b respectively, and M is the midpoint of AB, then OM＝（　　）",["A. a＋b","B. (a＋b)/2","C. (a−b)/2","D. (b−a)/2"],"B"],
+  ["VLO031","Coordinate Application of Path Vectors","Given A(1，2), B(3，5), and AB＋BC＝(4，1), then the coordinates of C are（　　）",["A. (4，1)","B. (2，0)","C. (5，7)","D. (5，3)"],"D"],
+  ["VLO032","Midpoint and Side Vectors","In △ABC, M is the midpoint of AB, then BM＝（　　）",["A. AB/2","B. −AB/2","C. AM/2","D. −AM/2"],"B"],
+  ["VLO033","Midpoint Vector in a Parallelogram","In parallelogram ABCD, E is the midpoint of CD, given AB＝a and AD＝b, then BE＝（　　）",["A. b＋a/2","B. a−b/2","C. b−a/2","D. a＋b/2"],"C"],
+  ["VLO034","Midpoint Vector in a Square","In square ABCD, E is the midpoint of CD, given AB＝a and AD＝b, then AE＝（　　）",["A. a＋b/2","B. a/2−b","C. a/2＋b","D. a＋b"],"C"],
+  ["VLO035","Centroid Position Vector of a Triangle","O is the origin, the position vectors of points A, B, and C are a, b, and c respectively, and G is the centroid of △ABC, then OG＝（　　）",["A. (a＋b)/2","B. (a＋b＋c)/3","C. a＋b＋c","D. (a−b＋c)/3"],"B"],
+  ["VLO036","Linear Combination of Parallelogram Sides","In parallelogram ABCD, AB＝a and AD＝b, then AB＋DC＝（　　）",["A. 0","B. 2b","C. a＋b","D. 2a"],"D"],
+  ["VLO037","Internal Division Point Vector","Point P lies on segment AB with AP＝2PB, then AP＝（　　）",["A. AB/3","B. 2AB/3","C. PB/3","D. 3AB/2"],"B"],
+  ["VLO038","Internal Division Point Position Vector","O is the origin, OA＝a, OB＝b, and point P lies on segment AB with AP＝2PB, then OP＝（　　）",["A. (a＋2b)/3","B. (2a＋b)/3","C. (a−2b)/3","D. (2a−b)/3"],"A"],
+  ["VLO039","Coordinate Application of Path Vectors","Given A(1，1), B(4，3), C(2，6), then AB＋BC＝（　　）",["A. (3，2)","B. (1，5)","C. (−2，3)","D. (6，9)"],"B"],
+  ["VLO040","Coordinate Representation of a Vector","Given A(−1，2), B(3，5), then AB＝（　　）",["A. (2，7)","B. (−4，−3)","C. (4，3)","D. (3，5)"],"C"],
+  ["VLO041","Coordinate Representation of a Translation","Given that point A(2，−1) is translated by the vector (−5，5) to point B, then the coordinates of B are（　　）",["A. (−3，4)","B. (5，−5)","C. (−1，3)","D. (5，5)"],"A"],
+  ["VLO042","Equality of Vector Coordinates","If the vector (x＋1，2y−1)＝(3，5), then x＋y＝（　　）",["A. 1","B. 3","C. 6","D. 5"],"D"],
+  ["VLO043","Linear Representation of Coordinate Vectors","Given a＋b＝(5，2) and a−b＝(1，4), then a＝（　　）",["A. (5，2)","B. (1，4)","C. (−3，−3)","D. (3，3)"],"D"],
+  ["VLO044","Opposite Relationship of Coordinate Vectors","Given a＋(1，−4)＝0, then a＝（　　）",["A. (−1，4)","B. (3，1)","C. (−3，7)","D. (−1，−7)"],"A"],
+  ["VLO045","Vector Linear Equation","Given that a and b are non-collinear vectors, if xa＋b＝3a＋b, then x＝（　　）",["A. −3","B. 1","C. 3","D. 4"],"C"],
+  ["VLO046","Midpoint-Related Vectors","In △ABM, given AM＝a and BM＝b, then AB＝（　　）",["A. a＋b","B. a−b","C. −a＋b","D. −a−b"],"B"],
+  ["VLO047","Midsegment Vector of a Triangle","In △ABC, D and E are the midpoints of AB and AC respectively, then DE＝（　　）",["A. AB/2","B. AC/2","C. BC/2","D. CB/2"],"C"],
+  ["VLO048","Midpoint Vector of a Triangle","In △ABC, D is the midpoint of AB, then CD＝（　　）",["A. AB/2＋AC","B. AC−AB/2","C. −AB/2−AC","D. AB/2−AC"],"D"],
+  ["VLO049","Linear Operations on Vectors","If a＋b＝c and 2a−b＝d, then 3a＝（　　）",["A. c＋d","B. c−d","C. d−c","D. 2c＋d"],"A"],
+  ["VLO050","Vector Sum Along a Closed Path","In quadrilateral ABCD, AB＋BC＋CD＋DA＝（　　）",["A. AC","B. BD","C. 0","D. AB＋CD"],"C"]
+];
+
+// Topic 2: Vector Collinearity Coordinate Representation (25 Qs)
+const RAW_VCL = [
+  ["VCL001","Determination of Collinear Vectors","If a and b are nonzero plane vectors, then the necessary and sufficient condition for a and b to be collinear is（　　）",["A. a＝b","B. There exists a real number λ such that b＝λa","C. a＋b＝0","D. a−b＝0"],"B"],
+  ["VCL002","Coordinate Condition for Collinear Vectors","Given a＝(x₁，y₁), b＝(x₂，y₂), then the necessary and sufficient condition for a and b to be collinear is（　　）",["A. x₁＋x₂＝y₁＋y₂","B. x₁＝x₂","C. x₁＝x₂ and y₁＝y₂","D. x₁y₂−y₁x₂＝0"],"D"],
+  ["VCL003","Coordinate Representation of Collinear Vectors","Given a＝(2，1), b＝(4，m), if a and b are collinear, then m＝（　　）",["A. 1","B. 4","C. 2","D. −2"],"C"],
+  ["VCL004","Direction of Collinear Vectors","Given a＝(2，−3), b＝(−4，6), then a and b（　　）",["A. are collinear and opposite in direction","B. are collinear and same in direction","C. are not collinear","D. a＋b＝0"],"A"],
+  ["VCL005","Identifying Collinear Vectors","Among the following pairs of vectors, the pair that is not collinear is（　　）",["A. a＝(1，2), b＝(2，4)","B. a＝(1，2), b＝(2，3)","C. a＝(−1，3), b＝(2，−6)","D. a＝(0，2), b＝(0，−5)"],"B"],
+  ["VCL006","Coordinate Condition for Collinear Vectors","Given a＝(1，2), b＝(3，6), then the value of 1×6−2×3 is（　　）",["A. 6","B. 12","C. 0","D. −6"],"C"],
+  ["VCL007","Coordinate Representation of Collinear Vectors","Given a＝(4，m), b＝(−2，3), and a and b are collinear, then a＋b＝（　　）",["A. (−2，3)","B. (2，3)","C. (−2，−3)","D. (2，−3)"],"D"],
+  ["VCL008","Multiples of Collinear Vectors","Given a＝(m，−4), b＝(−3，6), and a＝λb, then λ＝（　　）",["A. −2/3","B. 2/3","C. 3/2","D. −3/2"],"A"],
+  ["VCL009","Multiple Relationship of Vectors","Given a＝(1，2), b＝(m，6), and b＝3a, then m＝（　　）",["A. −3","B. 2","C. 6","D. 3"],"D"],
+  ["VCL010","Multiple Relationship of Vectors","Given a＝(3，−2), b＝(m，4), and b＝−2a, then m＝（　　）",["A. 6","B. −6","C. −3","D. 3"],"B"],
+  ["VCL011","Coordinate Representation of Collinear Vectors","Given a＝(2，−1), b＝(m，3), among the following values of m, the one that makes a and b collinear is（　　）",["A. −2","B. 2","C. −6","D. 6"],"C"],
+  ["VCL012","Recognizing the Ratio of Collinear Vectors","Given a＝(5，−10), b＝(−2，4), then the relationship between a and b is（　　）",["A. a＝−5b/2","B. a＝5b/2","C. a＝−2b/5","D. a and b are not collinear"],"A"],
+  ["VCL013","Vector Criterion for Collinearity of Three Points","A(1，2), B(3，6), C(m，10). If the three points A, B, and C are collinear, then m＝（　　）",["A. 3","B. 4","C. 6","D. 5"],"D"],
+  ["VCL014","Vector Criterion for Collinearity of Three Points","Given A(−1，3), B(2，1), among the following points, the one that makes the three points A, B, and C collinear is（　　）",["A. C(4，0)","B. C(5，−1)","C. C(2，−1)","D. C(5，1)"],"B"],
+  ["VCL015","Position Vectors and Collinearity of Three Points","O is the origin, A(2，−1), and the position vector of point P is p＝(6，m). If the three points O, A, and P are collinear, then m＝（　　）",["A. −2","B. 3","C. −3","D. −6"],"C"],
+  ["VCL016","Vector Criterion for Collinearity of Three Points","Given A(2，1), B(5，7), C(7，11), then（　　）",["A. The three points A, B, and C are not collinear","B. AB＝BC","C. AC＝2AB","D. The three points A, B, and C are collinear"],"D"],
+  ["VCL017","Vector Criterion for Collinearity of Three Points","Given A(1，4), B(4，2), and AP＝3AB, then the coordinates of P are（　　）",["A. (10，−2)","B. (7，−2)","C. (10，2)","D. (−10，2)"],"A"],
+  ["VCL018","Coordinates of Oppositely Directed Collinear Vectors","Given a＝(3，4), b＝(−6，m). If a and b are opposite in direction and collinear, then m＝（　　）",["A. 8","B. −6","C. −8","D. 6"],"C"],
+  ["VCL019","Determining Collinearity from Edge Vectors","Three points A, B, and C in the plane satisfy AB＝(1，2), AC＝(m，6). If the three points A, B, and C are collinear, then m＝（　　）",["A. 1","B. 3","C. 2","D. 6"],"B"],
+  ["VCL020","Determining Collinearity from Edge Vectors","Three points A, B, and C in the plane satisfy AB＝(2，−1), AC＝(6，−3), then the relationship between vectors AB and AC is（　　）",["A. AB＝3AC","B. AC＝−3AB","C. AB and AC are not collinear","D. AC＝3AB"],"D"],
+  ["VCL021","Coefficient Representation of Collinear Vectors","a and b are non-collinear vectors. If u＝a＋2b, v＝ka＋6b, and u and v are collinear, then k＝（　　）",["A. 3","B. 1","C. 2","D. 6"],"A"],
+  ["VCL022","Coefficient Representation of Collinear Vectors","a and b are non-collinear vectors. If u＝2a−b, v＝6a＋mb, and u and v are collinear, then m＝（　　）",["A. −6","B. 3","C. −3","D. 6"],"C"],
+  ["VCL023","Coefficient Representation of Collinear Vectors","a and b are non-collinear vectors. If u＝a−3b, v＝ma−6b, and u and v are collinear, then m＝（　　）",["A. −2","B. 2","C. 3","D. 6"],"B"],
+  ["VCL024","Multi-Segment Edge Vectors and Collinearity","a and b are non-collinear vectors. Given AB＝2a−b, BC＝a＋3b, CD＝a−4b, then the following three points that are collinear are（　　）",["A. A, B, C","B. A, C, D","C. B, C, D","D. A, B, D"],"D"],
+  ["VCL025","Multi-Segment Edge Vectors and Collinearity","a and b are non-collinear vectors. Given AB＝2a＋b, BC＝a−2b, CD＝−3a＋6b, then the following three points that are collinear are（　　）",["A. B, C, D","B. A, B, C","C. A, B, D","D. A, C, D"],"A"]
+];
+
+// Topic 3: Vector Dot Product (25 Qs)
+const RAW_VDP = [
+  ["VDP001","Definition of the Dot Product","Let θ be the angle between nonzero vectors a and b, then a·b equals (　　)",["A. |a|＋|b|","B. |a||b|cosθ","C. |a||b|sinθ","D. |a|/|b|"],"B"],
+  ["VDP002","Commutative Law of the Dot Product","Among the following equations, the one that always holds is (　　)",["A. a·b＝a＋b","B. a·b＝|a|＋|b|","C. a·b＝a·(−b)","D. a·b＝b·a"],"D"],
+  ["VDP003","Distributive Law of the Dot Product","Among the following equations, the one that always holds is (　　)",["A. a·(b＋c)＝a·b＋b·c","B. (a＋b)·c＝a·c−b·c","C. a·(b＋c)＝a·b＋a·c","D. a·(b−c)＝a·b＋a·c"],"C"],
+  ["VDP004","Dot Product of Perpendicular Vectors","If nonzero vectors a and b satisfy a·b＝0, then a and b are (　　)",["A. perpendicular","B. parallel and in the same direction","C. parallel and in opposite directions","D. equal in length"],"A"],
+  ["VDP005","Dot Product of Coordinate Vectors","Given a＝(1，2)，b＝(3，−1)，then a·b＝（　　）",["A. 5","B. 1","C. −1","D. −5"],"B"],
+  ["VDP006","Dot Product of Composite Vectors","Given a＝(2，−3)，b＝(4，1)，then a·(a＋b)＝（　　）",["A. 8","B. 13","C. 18","D. −18"],"C"],
+  ["VDP007","Perpendicular Coordinate Vectors","Given a＝(2，1)，b＝(m，−4). If a⊥b, then m＝（　　）",["A. −2","B. 4","C. −4","D. 2"],"D"],
+  ["VDP008","Perpendicular Coordinate Vectors","Given a＝(3，−2), among the following vectors, the one perpendicular to a is (　　)",["A. (2，3)","B. (3，2)","C. (−2，3)","D. (1，1)"],"A"],
+  ["VDP009","Finding the Cosine of the Angle from the Dot Product","Given |a|＝2，|b|＝3，a·b＝3, then cosθ＝（　　）",["A. 1/3","B. −1/2","C. 3/2","D. 1/2"],"D"],
+  ["VDP010","Sign of the Dot Product","If the angle between nonzero vectors a and b is obtuse, then a·b is (　　)",["A. greater than 0","B. less than 0","C. equal to 0","D. indeterminate"],"B"],
+  ["VDP011","Magnitude of the Sum Vector","Given |a|＝3，|b|＝4，a·b＝6, then |a＋b|²＝（　　）",["A. 25","B. 49","C. 37","D. 1"],"C"],
+  ["VDP012","Magnitude of the Difference Vector","Given |a|＝3，|b|＝4，a·b＝6, then |a−b|²＝（　　）",["A. 13","B. 37","C. 25","D. 1"],"A"],
+  ["VDP013","Dot Product of Sum and Difference Vectors","(a＋b)·(a−b) equals (　　)",["A. |a|²＋|b|²","B. 2a·b","C. |a−b|²","D. |a|²−|b|²"],"D"],
+  ["VDP014","Dot Product of Scalar-Multiplied Vectors","If a·b＝−2, then (3a)·(−2b)＝（　　）",["A. −12","B. 12","C. 6","D. −6"],"B"],
+  ["VDP015","Linear Operations of the Dot Product","If a·b＝2，a·c＝−1, then a·(2b−3c)＝（　　）",["A. 1","B. −7","C. 7","D. 4"],"C"],
+  ["VDP016","Dot Product of Coordinate Vectors","Given a＝(1，−2)，b＝(2，3)，then (a＋b)·b＝（　　）",["A. 5","B. −1","C. 7","D. 13"],"D"],
+  ["VDP017","Magnitude Under Perpendicularity","If a⊥b，|a|＝5，|b|＝12, then |a＋b|＝（　　）",["A. 13","B. 7","C. 17","D. 60"],"A"],
+  ["VDP018","Dot Product of Opposite Vectors","If |a|＝4, then a·(−a)＝（　　）",["A. 16","B. −4","C. −16","D. 4"],"C"],
+  ["VDP019","Geometric Meaning of the Dot Product","If a and b are nonzero vectors and a·b＞0, then the angle between a and b is (　　)",["A. a right angle","B. an acute angle","C. an obtuse angle","D. a straight angle"],"B"],
+  ["VDP020","Minimum Magnitude of a Linear Combination Vector","Given |a|＝|b|＝1，a·b＝−1/2，c＝λa＋(1−λ)b（λ∈ℝ）, then the minimum value of |c| is (　　)",["A. √3/2","B. 1","C. √2/2","D. 1/2"],"D"],
+  ["VDP021","Linear Operations of the Dot Product","Given |a|＝|b|＝1，a·b＝1/2，c＝a＋b, then c·a＝（　　）",["A. 3/2","B. 1/2","C. 1","D. √2/2"],"A"],
+  ["VDP022","Finding the Dot Product from the Magnitude of the Sum Vector","Given |a|＝2，|b|＝3，|a＋b|＝√19, then a·b＝（　　）",["A. −3","B. 6","C. 3","D. −6"],"C"],
+  ["VDP023","Finding the Dot Product from the Magnitude of the Difference Vector","Given |a|＝|b|＝2，|a−b|＝2, then a·b＝（　　）",["A. −2","B. 2","C. 0","D. 4"],"B"],
+  ["VDP024","Quadratic Form of the Dot Product","Given |a|＝|b|＝1，a·b＝0, then |a＋2b|²＝（　　）",["A. 3","B. 4","C. 9","D. 5"],"D"],
+  ["VDP025","Direction Determination by the Dot Product","If nonzero vectors a and b satisfy a·b＝|a||b|, then a and b are (　　)",["A. in the same direction","B. in opposite directions","C. perpendicular","D. not collinear"],"A"]
+];
+
+// Topic 4: Complex Numbers — Concepts (25 Qs)
+const RAW_CCP = [
+  ["CCP001","the imaginary unit","The imaginary unit i satisfies (　　)",["A. i²＝1","B. i²＝−1","C. i＝−1","D. i²＝0"],"B"],
+  ["CCP002","the algebraic form of complex numbers","The real part of the complex number z＝a＋bi（a、b∈ℝ）is (　　)",["A. b","B. a＋b","C. bi","D. a"],"D"],
+  ["CCP003","the algebraic form of complex numbers","The imaginary part of the complex number z＝a＋bi（a、b∈ℝ）is (　　)",["A. a","B. bi","C. b","D. a＋b"],"C"],
+  ["CCP004","real numbers and complex numbers","Among the following complex numbers, the one that is a real number is (　　)",["A. −3","B. 2i","C. 1＋i","D. −i"],"A"],
+  ["CCP005","purely imaginary numbers","Among the following complex numbers, the one that is a purely imaginary number is (　　)",["A. 0","B. −4i","C. 3＋i","D. 2"],"B"],
+  ["CCP006","real part and imaginary part","The real part and imaginary part of the complex number z＝−2＋3i are respectively (　　)",["A. −2，3i","B. 2，3","C. −2，3","D. −2i，3"],"C"],
+  ["CCP007","real part and imaginary part","The imaginary part of the complex number z＝5−2i is (　　)",["A. 2","B. −2i","C. 5","D. −2"],"D"],
+  ["CCP008","equal complex numbers","If x∈ℝ and 3＋xi＝3−2i, then x＝(　　)",["A. −2","B. 2","C. 3","D. −3"],"A"],
+  ["CCP009","equal complex numbers","If x、y∈ℝ and (x＋1)＋2i＝4＋yi, then x＋y＝(　　)",["A. 1","B. 3","C. 6","D. 5"],"D"],
+  ["CCP010","equal complex numbers","If x、y∈ℝ and (2x−1)＋(y＋1)i＝3＋5i, then x−y＝(　　)",["A. 1","B. −1","C. 2","D. −2"],"D"],
+  ["CCP011","conjugate complex numbers","The conjugate complex number of z＝2−3i is (　　)",["A. −2＋3i","B. 2−3i","C. 2＋3i","D. −2−3i"],"C"],
+  ["CCP012","conjugate complex numbers","The conjugate complex number of z＝−4i is (　　)",["A. 4i","B. −4i","C. −4","D. 4"],"A"],
+  ["CCP013","properties of conjugate complex numbers","If z＝a＋bi, then the real parts of z and its conjugate complex number (　　)",["A. are opposite numbers","B. are both 0","C. cannot be determined","D. are equal"],"D"],
+  ["CCP014","the modulus of a complex number","The modulus |z| of the complex number z＝3＋4i is equal to (　　)",["A. 7","B. 5","C. √7","D. 25"],"B"],
+  ["CCP015","the modulus of a complex number","Given the complex number z＝3＋bi, b＜0, and |z|＝5, then b＝(　　)",["A. 4","B. −5","C. −4","D. 5"],"C"],
+  ["CCP016","representation in the complex plane","The point corresponding to the complex number z＝2−3i in the complex plane is (　　)",["A. (−3，2)","B. (2，3)","C. (−2，3)","D. (2，−3)"],"D"],
+  ["CCP017","representation in the complex plane","The complex number corresponding to point P(−1，4) in the complex plane is (　　)",["A. −1＋4i","B. 4−i","C. −1−4i","D. 1＋4i"],"A"],
+  ["CCP018","complex numbers and coordinate axes","The point corresponding to the complex number z＝−3i in the complex plane lies on (　　)",["A. the positive real axis","B. the positive imaginary axis","C. the negative imaginary axis","D. the negative real axis"],"C"],
+  ["CCP019","complex numbers and coordinate axes","The point corresponding to the complex number z＝5 in the complex plane lies on (　　)",["A. the positive imaginary axis","B. the positive real axis","C. the negative real axis","D. the negative imaginary axis"],"B"],
+  ["CCP020","complex-plane relationship of conjugate complex numbers","The axis of symmetry of the two points corresponding to z＝2−5i and its conjugate complex number in the complex plane is (　　)",["A. the imaginary axis","B. the origin","C. the line y＝x","D. the real axis"],"D"],
+  ["CCP021","condition for a purely imaginary number","If m∈ℝ and the complex number z＝(m−1)＋2i is a purely imaginary number, then m＝(　　)",["A. 1","B. −1","C. 2","D. 0"],"A"],
+  ["CCP022","condition for a real number","If m∈ℝ and the complex number z＝3＋(m＋2)i is a real number, then m＝(　　)",["A. 2","B. −3","C. −2","D. 3"],"C"],
+  ["CCP023","condition on the modulus of a complex number","If x∈ℝ, the complex number z＝x＋4i and |z|＝5, then x² is equal to (　　)",["A. 1","B. 9","C. 16","D. 25"],"B"],
+  ["CCP024","complex plane and modulus","The modulus |z| of the complex number z corresponding to point P(−3，4) in the complex plane is equal to (　　)",["A. 1","B. 7","C. 25","D. 5"],"D"],
+  ["CCP025","classification of complex numbers","If the complex number z＝a＋bi satisfies a＝0 and b≠0, then z is (　　)",["A. a purely imaginary number","B. a real number","C. the zero complex number","D. a nonnegative real number"],"A"]
+];
+
+// Topic 5: Complex Numbers — Four Basic Operations (50 Qs)
+const RAW_CAR = [
+  ["CAR001","powers of the imaginary unit","i³ equals（　　）",["A. i","B. −i","C. 1","D. −1"],"B"],
+  ["CAR002","powers of the imaginary unit","i¹⁰ equals（　　）",["A. 1","B. i","C. −i","D. −1"],"D"],
+  ["CAR003","powers of the imaginary unit","i²⁰²⁵ equals（　　）",["A. −i","B. 1","C. i","D. −1"],"C"],
+  ["CAR004","multiplication involving i","(1＋i)i equals（　　）",["A. −1＋i","B. 1＋i","C. 1−i","D. −1−i"],"A"],
+  ["CAR005","multiplication involving i","(2−i)i equals（　　）",["A. −1＋2i","B. 1＋2i","C. −1−2i","D. 1−2i"],"B"],
+  ["CAR006","addition of complex numbers","(2＋3i)＋(4−5i) equals（　　）",["A. 6＋8i","B. −2＋6i","C. 6−2i","D. −6＋2i"],"C"],
+  ["CAR007","subtraction of complex numbers","(5−2i)−(1＋3i) equals（　　）",["A. 4＋i","B. 6−5i","C. −4−5i","D. 4−5i"],"D"],
+  ["CAR008","subtraction of complex numbers","(−3＋4i)−(2−i) equals（　　）",["A. −5＋5i","B. −1＋3i","C. 5−5i","D. −5＋3i"],"A"],
+  ["CAR009","addition of conjugate complex numbers","(3＋2i)＋(3−2i) equals（　　）",["A. 6i","B. 3","C. 0","D. 6"],"D"],
+  ["CAR010","subtraction of conjugate complex numbers","(4−3i)−(4＋3i) equals（　　）",["A. 6i","B. −6i","C. 8","D. −6"],"B"],
+  ["CAR011","real part of complex number addition","The real part of the complex number (1−2i)＋(3＋5i) is（　　）",["A. 3","B. 7","C. 4","D. −4"],"C"],
+  ["CAR012","imaginary part of complex number subtraction","The imaginary part of the complex number (2＋i)−(4−3i) is（　　）",["A. 4","B. −2","C. −4","D. 2"],"A"],
+  ["CAR013","multiplication of complex numbers","(1＋i)(2−i) equals（　　）",["A. 1＋3i","B. 3−i","C. 1−3i","D. 3＋i"],"D"],
+  ["CAR014","multiplication of complex numbers","(2＋i)(3−2i) equals（　　）",["A. 4−i","B. 8−i","C. 8＋i","D. 4＋i"],"B"],
+  ["CAR015","multiplication of complex numbers","(−1＋2i)(3＋i) equals（　　）",["A. 1＋5i","B. −1＋5i","C. −5＋5i","D. 5−5i"],"C"],
+  ["CAR016","square of a complex number","(1＋i)² equals（　　）",["A. 2","B. −2","C. −2i","D. 2i"],"D"],
+  ["CAR017","square of a complex number","(2−i)² equals（　　）",["A. 3−4i","B. 3＋4i","C. −3−4i","D. 5−4i"],"A"],
+  ["CAR018","square of a complex number","(1−2i)² equals（　　）",["A. 3−4i","B. −3＋4i","C. −3−4i","D. 5−4i"],"C"],
+  ["CAR019","multiplication of conjugate complex numbers","(3＋4i)(3−4i) equals（　　）",["A. 7","B. 25","C. −25","D. 24"],"B"],
+  ["CAR020","multiplication of conjugate complex numbers","(1−√2i)(1＋√2i) equals（　　）",["A. 1","B. −1","C. 2","D. 3"],"D"],
+  ["CAR021","multiplication involving i","(1+i)(1−i)i equals（　　）",["A. 2i","B. 2","C. −2i","D. −2"],"A"],
+  ["CAR022","imaginary part of complex number multiplication","The imaginary part of the complex number (2＋3i)(1−i) is（　　）",["A. −1","B. 5","C. 1","D. −5"],"C"],
+  ["CAR023","real part of complex number multiplication","The real part of the complex number (1−2i)(2＋i) is（　　）",["A. 0","B. 4","C. −4","D. 2"],"B"],
+  ["CAR024","complex number multiplication and equality","If (1＋i)z＝2i, then z＝（　　）",["A. 1−i","B. −1＋i","C. −1−i","D. 1＋i"],"D"],
+  ["CAR025","division of complex numbers","(1＋i)/(1−i) equals（　　）",["A. i","B. −i","C. 1","D. −1"],"A"],
+  ["CAR026","division of complex numbers","(2＋i)/(1+i) equals（　　）",["A. 1/2＋3i/2","B. 3/2−i/2","C. 3/2＋i/2","D. 1/2−3i/2"],"B"],
+  ["CAR027","division of complex numbers","(3−i)/(1−i) equals（　　）",["A. 1＋2i","B. 2−i","C. 1−2i","D. 2＋i"],"D"],
+  ["CAR028","division of complex numbers","(1−2i)/(2+i) equals（　　）",["A. i","B. −1","C. −i","D. 1"],"C"],
+  ["CAR029","division of complex numbers","(4＋2i)/(2−i) equals（　　）",["A. 6/5＋8i/5","B. 6/5−8i/5","C. 2＋i","D. 1−2i"],"A"],
+  ["CAR030","reciprocal of a complex number","1/(1＋i) equals（　　）",["A. 1/2＋i/2","B. −1/2−i/2","C. −1/2＋i/2","D. 1/2−i/2"],"D"],
+  ["CAR031","reciprocal of a complex number","1/(2−i) equals（　　）",["A. 2/5−i/5","B. 2/5＋i/5","C. 1/2＋i/2","D. 2/3＋i/3"],"B"],
+  ["CAR032","real part of complex number division","The real part of the complex number (1＋3i)/(1−i) is（　　）",["A. 1","B. 2","C. −1","D. −2"],"C"],
+  ["CAR033","imaginary part of complex number division","The imaginary part of the complex number (2−2i)/(1＋i) is（　　）",["A. 2","B. 0","C. −1","D. −2"],"D"],
+  ["CAR034","linear complex-number equation in z","If z(1−i)＝2, then z＝（　　）",["A. 1＋i","B. 1−i","C. −1＋i","D. −1−i"],"A"],
+  ["CAR035","periodicity of the imaginary unit","i⁴⁰＋i⁴¹ equals（　　）",["A. −1＋i","B. 1＋i","C. 1−i","D. −1−i"],"B"],
+  ["CAR036","periodicity of the imaginary unit","i⁹＋i¹⁰＋i¹¹＋i¹² equals（　　）",["A. 1","B. −1","C. 0","D. i"],"C"],
+  ["CAR037","periodicity of the imaginary unit","1＋i＋i²＋i³ equals（　　）",["A. 0","B. 1","C. −1","D. i"],"A"],
+  ["CAR038","cube root of unity relation","If z³＝1 and z≠1, then 1＋z＋z² equals（　　）",["A. 1","B. −1","C. z","D. 0"],"D"],
+  ["CAR039","cube root of unity periodic sum","If z³＝1 and z≠1, then z⁴＋z⁵＋z⁶ equals（　　）",["A. 1","B. 0","C. −1","D. z"],"B"],
+  ["CAR040","real part of a complex-number equation","If the complex number z satisfies (1＋i)z＝3＋i, then the real part of z is（　　）",["A. 1","B. −1","C. 2","D. 0"],"C"],
+  ["CAR041","mixed addition and multiplication of complex numbers","(1＋i)²＋(1−i)² equals（　　）",["A. 2","B. −2","C. 2i","D. 0"],"D"],
+  ["CAR042","mixed addition and multiplication of complex numbers","(2＋i)(2−i)＋i² equals（　　）",["A. 4","B. 5","C. −4","D. −5"],"A"],
+  ["CAR043","mixed addition and multiplication of complex numbers","(1＋i)³ equals（　　）",["A. 2＋2i","B. −2−2i","C. −2＋2i","D. 2−2i"],"C"],
+  ["CAR044","mixed addition and multiplication of complex numbers","(1−i)³ equals（　　）",["A. 2−2i","B. −2−2i","C. −2＋2i","D. 2＋2i"],"B"],
+  ["CAR045","division and addition of complex numbers","1/(1+i)＋1/(1−i) equals（　　）",["A. 0","B. i","C. −i","D. 1"],"D"],
+  ["CAR046","division and addition of complex numbers","(1+i)/(1−i)＋(1−i)/(1+i) equals（　　）",["A. 0","B. 2","C. −2","D. 2i"],"A"],
+  ["CAR047","substitution verification in a complex-number equation","The complex number z satisfies (z−2i)(2−i)＝5, then z＝（　　）",["A. 3＋2i","B. 2＋3i","C. 3−2i","D. 2−i"],"B"],
+  ["CAR048","powers of conjugate complex numbers","(2＋i)²−(2−i)² equals（　　）",["A. 8","B. −8i","C. 8i","D. −8"],"C"],
+  ["CAR049","substitution verification in a complex-number equation","The complex number z satisfies (z＋i)(1＋i)＝2i, then z＝（　　）",["A. −1","B. i","C. −i","D. 1"],"D"],
+  ["CAR050","comprehensive four basic operations on complex numbers","(3＋i)/(1+i)＋(1−i) equals（　　）",["A. 3−2i","B. 2−i","C. 3＋2i","D. 1−2i"],"A"]
+];
+
+/* Rehydrate into Application Data */
+const parseRaw = arr => arr.map(([id, kp, q, options, ans]) => ({id, kp, q, options, ans}));
+const DATA = {
+  vec_linear: parseRaw(RAW_VLO),
+  vec_collinear: parseRaw(RAW_VCL),
+  vec_dot: parseRaw(RAW_VDP),
+  complex_concept: parseRaw(RAW_CCP),
+  complex_ops: parseRaw(RAW_CAR)
+};
+
+/* ==================== 2. APPLICATION LOGIC ==================== */
+let currentTab = 'vec_linear';
+let currentMode = 'practice';
+let isGridCollapsed = false;
+
+let userAnswers = {
+  vec_linear: {},
+  vec_collinear: {},
+  vec_dot: {},
+  complex_concept: {},
+  complex_ops: {}
+};
+
+let examSubmitted = {
+  vec_linear: false,
+  vec_collinear: false,
+  vec_dot: false,
+  complex_concept: false,
+  complex_ops: false
+};
+
+/* Timer State */
+let examDurationMinutes = 45;
+let examTimeRemaining = 45 * 60;
+let timerInterval = null;
+let isTimerRunning = false;
+
+const TAB_TITLES = {
+  vec_linear: "Vector Linear Ops (向量线性运算)",
+  vec_collinear: "Collinear Vectors (向量共线)",
+  vec_dot: "Dot Product (向量数量积)",
+  complex_concept: "Complex Concepts (复数概念)",
+  complex_ops: "Complex Operations (复数四则运算)"
+};
+
+function switchTab(tabKey) {
+  currentTab = tabKey;
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById(`tab-${tabKey}`).classList.add('active');
+  document.getElementById('key-title').innerText = `Quick Answer Key (${TAB_TITLES[tabKey]})`;
+  renderApp();
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-practice').classList.toggle('active', mode === 'practice');
+  document.getElementById('btn-exam').classList.toggle('active', mode === 'exam');
+
+  document.getElementById('score-box').style.display = mode === 'exam' ? 'flex' : 'none';
+  document.getElementById('practice-acc-box').style.display = mode === 'practice' ? 'flex' : 'none';
+  document.getElementById('btn-submit-exam').style.display = mode === 'exam' ? 'inline-block' : 'none';
+
+  const timerBox = document.getElementById('timer-box');
+  if (mode === 'exam') {
+    timerBox.style.display = 'flex';
+    if (!isTimerRunning && !examSubmitted[currentTab]) {
+      startTimer();
+    }
+  } else {
+    timerBox.style.display = 'none';
+    pauseTimer();
+  }
+
+  renderApp();
+}
+
+/* Timer Control Functions */
+function startTimer() {
+  if (isTimerRunning) return;
+  isTimerRunning = true;
+  document.getElementById('timer-toggle-btn').innerText = '⏸';
+  timerInterval = setInterval(() => {
+    if (examTimeRemaining > 0) {
+      examTimeRemaining--;
+      updateTimerDisplay();
+    } else {
+      pauseTimer();
+      alert("Time is up! Your exam will now be submitted and graded.");
+      submitExam();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  if (!isTimerRunning) return;
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+  const btn = document.getElementById('timer-toggle-btn');
+  if (btn) btn.innerText = '▶';
+}
+
+function toggleTimer() {
+  if (isTimerRunning) {
+    pauseTimer();
+  } else {
+    startTimer();
+  }
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(examTimeRemaining / 60);
+  const s = examTimeRemaining % 60;
+  const str = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  const el = document.getElementById('timer-display');
+  if (el) {
+    el.innerText = str;
+    el.style.color = examTimeRemaining <= 300 ? 'var(--danger)' : 'var(--slate-800)';
+  }
+}
+
+function ensureTimerModal() {
+  let backdrop = document.getElementById('timer-modal-backdrop');
+  if (backdrop) return backdrop;
+
+  backdrop = document.createElement('div');
+  backdrop.id = 'timer-modal-backdrop';
+  backdrop.className = 'timer-modal-backdrop';
+  backdrop.hidden = true;
+  backdrop.innerHTML = `
+    <section class="timer-modal" role="dialog" aria-modal="true" aria-labelledby="timer-modal-title">
+      <h2 id="timer-modal-title">Set exam timer</h2>
+      <p>Choose a duration from 1 to 300 minutes.</p>
+      <form id="timer-modal-form">
+        <label for="timer-duration-input">Duration (minutes)</label>
+        <input id="timer-duration-input" name="duration" type="number" min="1" max="300" step="1" required inputmode="numeric" />
+        <div id="timer-modal-error" class="timer-modal-error" role="alert" aria-live="polite"></div>
+        <div class="timer-modal-actions">
+          <button class="timer-modal-cancel" type="button" id="timer-modal-cancel">Cancel</button>
+          <button class="timer-modal-save" type="submit">Set timer</button>
+        </div>
+      </form>
+    </section>`;
+  document.body.appendChild(backdrop);
+
+  backdrop.addEventListener('click', function (event) {
+    if (event.target === backdrop) closeTimerModal();
+  });
+  document.getElementById('timer-modal-cancel').addEventListener('click', closeTimerModal);
+  document.getElementById('timer-modal-form').addEventListener('submit', applyTimerDuration);
+  return backdrop;
+}
+
+function promptTimerDuration() {
+  const backdrop = ensureTimerModal();
+  const input = document.getElementById('timer-duration-input');
+  const error = document.getElementById('timer-modal-error');
+  input.value = String(examDurationMinutes);
+  error.textContent = '';
+  backdrop.hidden = false;
+  window.setTimeout(() => { input.focus(); input.select(); }, 0);
+}
+
+function closeTimerModal() {
+  const backdrop = document.getElementById('timer-modal-backdrop');
+  if (backdrop) backdrop.hidden = true;
+}
+
+function applyTimerDuration(event) {
+  event.preventDefault();
+  const input = document.getElementById('timer-duration-input');
+  const error = document.getElementById('timer-modal-error');
+  const mins = Number(input.value);
+  if (!Number.isInteger(mins) || mins < 1 || mins > 300) {
+    error.textContent = 'Enter a whole number between 1 and 300.';
+    input.focus();
+    return;
+  }
+
+  examDurationMinutes = mins;
+  examTimeRemaining = mins * 60;
+  updateTimerDisplay();
+  closeTimerModal();
+  if (!isTimerRunning && currentMode === 'exam' && !examSubmitted[currentTab]) {
+    startTimer();
+  }
+}
+
+window.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') closeTimerModal();
+});
+
+function toggleNavigatorGrid() {
+  isGridCollapsed = !isGridCollapsed;
+  const navRow = document.getElementById('bar-nav-row');
+  const btn = document.getElementById('toggle-grid-btn');
+  navRow.classList.toggle('collapsed', isGridCollapsed);
+  btn.innerText = isGridCollapsed ? '▼ Show Grid' : '▲ Minimize';
+}
+
+function renderApp() {
+  renderNavigator();
+  renderQuestions();
+  renderAnswerKeyTable();
+  updateStats();
+}
+
+function renderNavigator() {
+  const container = document.getElementById('jump-grid');
+  container.innerHTML = '';
+  const questions = DATA[currentTab];
+  const answers = userAnswers[currentTab];
+  const isExamDone = currentMode === 'exam' && examSubmitted[currentTab];
+
+  questions.forEach((q, idx) => {
+    const node = document.createElement('a');
+    node.className = 'jump-node';
+    node.innerText = idx + 1;
+    node.href = `#q-${q.id}`;
+
+    const chosen = answers[q.id];
+    if (chosen) {
+      if (currentMode === 'practice' || isExamDone) {
+        node.classList.add(chosen === q.ans ? 'correct' : 'wrong');
+      } else {
+        node.classList.add('answered');
+      }
+    }
+
+    container.appendChild(node);
+  });
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  const questions = DATA[currentTab];
+  const answers = userAnswers[currentTab];
+  const isExamDone = currentMode === 'exam' && examSubmitted[currentTab];
+
+  questions.forEach((item) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `q-${item.id}`;
+
+    const chosen = answers[item.id];
+
+    let optionsHtml = item.options.map(opt => {
+      const optLetter = opt.charAt(0);
+      let btnClasses = ['opt-btn'];
+
+      if (chosen === optLetter) {
+        btnClasses.push('selected');
+      }
+
+      if ((currentMode === 'practice' && chosen) || isExamDone) {
+        if (optLetter === item.ans) {
+          btnClasses.push('correct');
+        } else if (chosen === optLetter && chosen !== item.ans) {
+          btnClasses.push('wrong');
+        }
+      }
+
+      return `<button class="${btnClasses.join(' ')}" onclick="selectOption('${item.id}', '${optLetter}')">
+                ${opt}
+              </button>`;
+    }).join('');
+
+    let feedbackHtml = '';
+    if ((currentMode === 'practice' && chosen) || isExamDone) {
+      const isRight = chosen === item.ans;
+      feedbackHtml = `
+        <div class="q-feedback show ${isRight ? 'correct' : 'wrong'}">
+          ${isRight ? '✓ <strong>Correct!</strong>' : `✗ <strong>Incorrect.</strong> The correct answer is <strong>${item.ans}</strong>.`}
+        </div>
+      `;
+    }
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-id">${item.id}</span>
+        <span class="q-tag">【Knowledge Point: ${item.kp}】</span>
+      </div>
+      <div class="q-text">${item.q}</div>
+      <div class="options-grid grid-2">${optionsHtml}</div>
+      ${feedbackHtml}
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qId, letter) {
+  if (currentMode === 'exam' && examSubmitted[currentTab]) return;
+
+  userAnswers[currentTab][qId] = letter;
+  renderNavigator();
+  renderQuestions();
+  updateStats();
+}
+
+function updateStats() {
+  const total = DATA[currentTab].length;
+  const answers = userAnswers[currentTab];
+  const answeredCount = Object.keys(answers).length;
+
+  document.getElementById('stat-progress').innerText = `${answeredCount} / ${total}`;
+
+  let correctCount = 0;
+  for (let id in answers) {
+    const qObj = DATA[currentTab].find(q => q.id === id);
+    if (qObj && answers[id] === qObj.ans) {
+      correctCount++;
+    }
+  }
+
+  if (currentMode === 'practice') {
+    if (answeredCount === 0) {
+      document.getElementById('stat-accuracy').innerText = '--';
+    } else {
+      const rate = Math.round((correctCount / answeredCount) * 100);
+      document.getElementById('stat-accuracy').innerText = `${rate}% (${correctCount}/${answeredCount})`;
+    }
+  } else {
+    if (examSubmitted[currentTab]) {
+      const score = Math.round((correctCount / total) * 100);
+      document.getElementById('stat-score').innerText = `${score}% (${correctCount}/${total})`;
+    } else {
+      document.getElementById('stat-score').innerText = `Not Graded`;
+    }
+  }
+}
+
+function submitExam() {
+  examSubmitted[currentTab] = true;
+  pauseTimer();
+  renderApp();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function resetCurrentTab() {
+  if (confirm(`Reset all answers for the current topic?`)) {
+    userAnswers[currentTab] = {};
+    examSubmitted[currentTab] = false;
+    examTimeRemaining = examDurationMinutes * 60;
+    updateTimerDisplay();
+    if (currentMode === 'exam') startTimer();
+    renderApp();
+  }
+}
+
+function toggleAnswerKey() {
+  const content = document.getElementById('key-content');
+  const arrow = document.getElementById('key-arrow');
+  const isOpen = content.classList.toggle('open');
+  arrow.innerText = isOpen ? '▲' : '▼';
+}
+
+function renderAnswerKeyTable() {
+  const table = document.getElementById('key-table');
+  const questions = DATA[currentTab];
+  const numRows = Math.ceil(questions.length / 10);
+
+  let headerHtml = '<tr>';
+  for (let i = 0; i < 10; i++) {
+    headerHtml += `<th>Q#</th><th>Ans</th>`;
+  }
+  headerHtml += '</tr>';
+
+  let bodyHtml = '';
+  for (let row = 0; row < numRows; row++) {
+    bodyHtml += '<tr>';
+    for (let col = 0; col < 10; col++) {
+      const index = row * 10 + col;
+      if (index < questions.length) {
+        const q = questions[index];
+        bodyHtml += `<td><strong>${q.id}</strong></td><td class="correct-highlight">${q.ans}</td>`;
+      } else {
+        bodyHtml += `<td></td><td></td>`;
+      }
+    }
+    bodyHtml += '</tr>';
+  }
+
+  table.innerHTML = `<thead>${headerHtml}</thead><tbody>${bodyHtml}</tbody>`;
+}
+
+// Initial Run
+updateTimerDisplay();
+renderApp();
+</script>
+</body>
+</html>
